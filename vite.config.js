@@ -18,6 +18,12 @@ export default defineConfig({
       },
     ],
   },
+  optimizeDeps: {
+    include: [
+        "@fawmi/vue-google-maps",
+        "fast-deep-equal"
+    ]
+  },
   build: {
     commonjsOptions: {
       transformMixedEsModules: true,
