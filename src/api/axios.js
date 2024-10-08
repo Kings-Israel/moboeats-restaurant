@@ -3,7 +3,7 @@ import axios from 'axios'
 import router from '../router'
 import { useToast } from 'vue-toastification'
 
-const baseURL = process.env.NODE_ENV === 'development' ? 'http://api.moboeats.test/api/v1/' : 'https://api.moboeats.co.uk/api/v1'
+const baseURL = process.env.NODE_ENV === 'development' ? 'http://api.moboeats.test/api/v1/' : 'https://api.moboeats.com/api/v1'
 
 const toast = useToast()
 
