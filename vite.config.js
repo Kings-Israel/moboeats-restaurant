@@ -30,7 +30,7 @@ export default defineConfig({
     }
   },
   server: {
-    host: 'restaurant.moboeats.test',
+    host: 'partner.moboeats.test',
     port: 3000
   }
 })
