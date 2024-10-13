@@ -308,11 +308,13 @@ export default {
       let total = 0
       let delivery_fee = 0
       restaurant.orders.forEach(order => {
-        if (order.payment) {
-          total += Number(order.payment.amount)
-        }
-        if (order.delivery_fee) {
-          delivery_fee += Number(order.delivery_fee)
+        if (order.status == 'Delivered') {
+          if (order.payment) {
+            total += Number(order.payment.amount)
+          }
+          if (order.delivery_fee) {
+            delivery_fee += Number(order.delivery_fee)
+          }
         }
       })
       return total - delivery_fee
