@@ -22,7 +22,7 @@
           <div class="rounded-md px-4 py-2 bg-gray-100 mx-32">
             <h1 v-if="status == 'update'" class="text-xl text-slate-800 dark:text-slate-100 font-bold mb-6">Edit Details ✨</h1>
             <h1 v-else class="text-xl text-slate-800 dark:text-slate-100 font-bold mb-6">Add Details ✨</h1>
-            <h3 class="text-xl text-slate-700 font-bold my-2">Business/Company Details</h3>
+            <h3 class="text-xl text-slate-700 font-bold my-2">Partner Details</h3>
             <!-- Form -->
             <form class="" @submit.prevent="onSubmit">
               <div class="flex gap-10">
@@ -46,10 +46,6 @@
                       <label class="block text-sm font-medium mb-1" for="phone_number">Partner/Business Phone Number <span class="text-rose-500">*</span></label>
                       <input id="phone_number" class="w-full rounded-md border-2 border-slate-400 text-slate-900" type="tel" v-model="phone_number" />
                     </div>
-                  </div>
-                  <div class="">
-                    <label class="block text-sm font-medium mb-1" for="email">Paypal or Venmo Email Address (maybe used to receive payouts) <span class="text-rose-500">*</span></label>
-                    <input id="email" class="w-full rounded-md border-2 border-slate-400 text-slate-900" type="email" v-model="paypal_email" />
                   </div>
                   <div>
                     <label class="block text-sm font-medium mb-1" for="profile_picture">Logo</label>
