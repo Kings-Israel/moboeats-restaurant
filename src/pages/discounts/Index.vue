@@ -25,9 +25,9 @@
             <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
               <button class="bg-indigo-700 hover:bg-indigo-500 p-2 text-white font-semibold rounded-full px-3" @click="addDiscountModal = true">Add Discount</button>
               <modal-action :id="'addMenu'" :modal-open="addDiscountModal" @close-modal="addDiscountModal = false" :add-class="'max-w-4xl'">
-                <p class="text-xl font-bold text-white">Add Discount on Menus</p>
+                <span class="text-xl font-bold px-4">Add Discount on Menus</span>
                 <!-- Add/Edit Menu -->
-                <form class="flex flex-col justify-around" @submit.prevent="createDiscount">
+                <form class="flex flex-col justify-around p-4" @submit.prevent="createDiscount">
                   <div class="grid grid-cols-2 gap-2">
                     <div class="space-y-4">
                       <div>
