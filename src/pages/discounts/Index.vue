@@ -74,8 +74,8 @@
             </div>
           </div>
 
-          <div class="flex justify-between gap-2 mb-2">
-            <form class="relative w-[40%]">
+          <div class="md:flex md:justify-between gap-2 mb-2">
+            <form class="relative w-full md:w-[40%]">
               <label for="action-search" class="">Search</label>
               <input id="action-search" class="form-input pl-9 bg-white dark:bg-slate-800 w-full" type="search" v-model="discountSearch" placeholder="Search Menus" />
               <button class="absolute inset-0 top-6 right-auto group" type="submit" aria-label="Search">

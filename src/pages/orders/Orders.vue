@@ -24,7 +24,7 @@
             <!-- Action Buttons -->
             <button class="bg-emerald-600 px-4 py-1 col-span-1 text-slate-50 font-semibold rounded-full justify-end w-60" @click="exportOrders()">Export Orders</button>
           </div>
-          <div class="grid grid-cols-5 gap-2 mb-2">
+          <div class="md:grid md:grid-cols-5 gap-2 mb-2">
             <form class="relative w-full col-span-2">
               <label for="action-search" class="">Search</label>
               <input id="action-search" class="form-input pl-9 bg-white dark:bg-slate-800 w-full" type="search" v-model="search" placeholder="Search Orders, Users, Restaurants" />
@@ -43,7 +43,7 @@
               <label for="action-search" class="">To Date</label>
               <input type="date" id="action-search" class="form-input bg-white dark:bg-slate-800 w-full" v-model="to_created_at" />
             </form>
-            <button class="bg-red-500 text-white rounded-full col-span-1 h-fit py-1 my-auto" @click="search = '', from_created_at = '', to_created_at = ''">Clear Fields</button>
+            <button class="bg-red-500 text-white rounded-full w-full mt-2 md:mt-0 md:col-span-1 h-fit py-1 my-auto" @click="search = '', from_created_at = '', to_created_at = ''">Clear Fields</button>
           </div>
 
           <!-- Table -->

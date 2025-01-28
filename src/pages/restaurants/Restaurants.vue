@@ -24,11 +24,11 @@
             <div class="flex gap-2">
               <!-- Right: Actions  -->
               <router-link class="btn btn-sm bg-yellow-300 text-slate-900 font-semibold rounded-full justify-end" :to="{ name: 'create-restaurant' }">Add New Branch</router-link>
-              <button class="bg-emerald-600 px-3 py-1 col-span-1 text-slate-50 font-semibold rounded-full justify-end" @click="exportRestaurants()">Export Branch</button>
+              <button class="bg-emerald-600 px-3 py-1 col-span-1 text-slate-50 font-semibold rounded-full justify-end" @click="exportRestaurants()">Export Branches</button>
             </div>
           </div>
           
-          <div class="grid grid-cols-3 gap-2 mb-2">
+          <div class="space-y-2 md:space-y-0 md:grid md:grid-cols-3 gap-2 mb-2">
             <form class="relative">
               <label for="action-search" class="sr-only">Search</label>
               <input id="action-search" class="form-input w-full pl-9 bg-white dark:bg-slate-800" type="search" v-model="search" placeholder="Search Restaurants" />
