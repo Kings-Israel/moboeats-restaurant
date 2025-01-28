@@ -124,8 +124,9 @@
                         </g>
                       </svg>
                       <span v-if="type == 'both'" class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Branches & Shops</span>
-                      <span v-if="type == 'restaurant'" class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">My Branches</span>
-                      <span v-if="type == 'grocery shop'" class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">My Grocery Shops</span>
+                      <span v-else-if="type == 'restaurant'" class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">My Branches</span>
+                      <span v-else-if="type == 'grocery shop'" class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">My Grocery Shops</span>
+                      <span v-else class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">My Shops</span>
                     </div>
                   </div>
                 </a>
