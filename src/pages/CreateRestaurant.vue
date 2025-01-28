@@ -19,15 +19,15 @@
             </div>
           </div>
 
-          <div class="rounded-md px-4 py-2 bg-gray-100 mx-32">
-            <h1 v-if="status == 'update'" class="text-xl text-slate-800 dark:text-slate-100 font-bold mb-6">Edit Details ✨</h1>
-            <h1 v-else class="text-xl text-slate-800 dark:text-slate-100 font-bold mb-6">Add Details ✨</h1>
-            <h3 class="text-xl text-slate-700 font-bold my-2">Partner Details</h3>
+          <div class="rounded-md lg:px-4 py-2 bg-gray-100 mx-4 lg:mx-32">
+            <h1 v-if="status == 'update'" class="px-2 lg:px-0 text-xl text-slate-800 dark:text-slate-100 font-bold mb-6">Edit Details ✨</h1>
+            <h1 v-else class="px-2 lg:px-0 text-xl text-slate-800 dark:text-slate-100 font-bold mb-6">Add Details ✨</h1>
+            <h3 class="px-2 lg:px-0 text-xl text-slate-700 font-bold my-2">Partner Details</h3>
             <!-- Form -->
             <form class="" @submit.prevent="onSubmit">
-              <div class="flex gap-10">
-                <div class="w-full md:w-1/2 space-y-4">
-                  <div class="flex gap-2">
+              <div class="px-2 lg:px-0 lg:flex gap-10">
+                <div class="w-full lg:w-1/2 space-y-4">
+                  <div class="md:flex gap-2">
                     <div class="basis-1/2">
                       <label class="block text-sm font-medium mb-1" for="restaurant_name">Partner Name <span class="text-rose-500">*</span></label>
                       <input id="restaurant_name" class="w-full rounded-md border-2 border-slate-400 text-slate-900" type="text" v-model="name" />
@@ -37,7 +37,7 @@
                       <input id="restaurant_name" class="w-full rounded-md border-2 border-slate-400 text-slate-900" type="text" v-model="name_short" />
                     </div>
                   </div>
-                  <div class="flex gap-2">
+                  <div class="md:flex gap-2">
                     <div class="basis-1/2">
                       <label class="block text-sm font-medium mb-1" for="email">Partner/Business Email Address <span class="text-rose-500">*</span></label>
                       <input id="email" class="w-full rounded-md border-2 border-slate-400 text-slate-900" type="email" v-model="email" />
@@ -51,7 +51,7 @@
                     <label class="block text-sm font-medium mb-1" for="profile_picture">Logo</label>
                     <input id="profile_picture" accept=".jpg,.png,.jpeg" v-on:change="onFileChange" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" autoComplete="on" />
                   </div>
-                  <div class="flex gap-2">
+                  <div class="md:flex gap-2">
                     <div class="basis-1/2">
                       <label class="block text-sm font-medium mb-1" for="restaurant_name">State </label>
                       <input id="restaurant_name" class="w-full rounded-md border-2 border-slate-400 text-slate-900" type="text" v-model="state" />
@@ -70,7 +70,7 @@
                     <textarea id="restaurant_name" class="w-full rounded-md border-2 border-slate-400 text-slate-900" type="text" v-model="about_short"></textarea>
                   </div>
                 </div>
-                <div class="w-full md:w-1/2 space-y-4">
+                <div class="w-full lg:w-1/2 space-y-4">
                   <div class="flex gap-2">
                     <label class="block text-sm font-medium mb-1" for="restaurant_name">Do you offer dine-in services?</label>
                     <!-- <input id="restaurant_name" class="w-full rounded-md border-2 border-slate-400 text-slate-900" type="number" min="0" v-model="sitting_capacity" /> -->
@@ -125,13 +125,13 @@
                   </div>
                 </div>
               </div>
-              <div class="flex items-center justify-end mt-6">
+              <div class="flex items-center justify-end mt-6 mx-2 lg:mx-0">
                 <router-link v-if="status == 'update'" class="btn bg-red-600 text-white" :to="{ name: 'restaurant-details', params: { id: restaurant.uuid }}">Cancel</router-link>
                 <button class="btn bg-[#2E5945] hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" ref="submit_button" type="submit">{{ status == 'create' ? 'Create' : 'Update' }}</button>
               </div>
             </form>
           </div>
-          <div class="flex items-center justify-end mt-6 mx-32 my-2">
+          <div class="flex items-center justify-end mt-6 mx-4 lg:mx-32 my-2">
             <button class="btn bg-red-500 hover:bg-red-600 text-white ml-3 whitespace-nowrap" type="button" @click="logout">Logout</button>
           </div>
         </div>
