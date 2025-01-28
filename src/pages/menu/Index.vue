@@ -108,7 +108,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-2 mb-2">
+          <div class="md:grid md:grid-cols-2 mb-2">
             <form class="relative">
               <label for="action-search" class="sr-only">Search</label>
               <input id="action-search" class="form-input pl-9 bg-white dark:bg-slate-800 w-96" type="search" v-model="menuSearch" placeholder="Search Menus and Resturants" />
