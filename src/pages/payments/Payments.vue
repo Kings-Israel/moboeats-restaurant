@@ -12,7 +12,7 @@
 
       <main class="grow">
         <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-          <div class="grid grid-cols-4 gap-4">
+          <div class="grid md:grid-cols-4 gap-4">
             <div v-if="role == 'restaurant'">
               <div class="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                 <div class="flex flex-col h-full">
@@ -89,7 +89,7 @@
             <button class="bg-emerald-600 py-1 col-span-1 text-slate-50 font-semibold rounded-full justify-end px-4" @click="exportPayments()">Export Payments</button>
           </div>
 
-          <div class="grid grid-cols-5 gap-2 mb-2">
+          <div class="grid md:grid-cols-5 gap-2 mb-2">
             <form class="relative w-full col-span-2">
               <label for="action-search" class="">Search</label>
               <input id="action-search" class="form-input pl-9 bg-white dark:bg-slate-800 w-full" type="search" v-model="search" placeholder="Search Orders, Users, Restaurants" />

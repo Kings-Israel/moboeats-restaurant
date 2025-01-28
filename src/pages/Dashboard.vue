@@ -157,7 +157,7 @@
           <div v-if="role == 'restaurant' && top_restaurants.length" class="grid grid-cols-12 gap-6 mb-4">
             <TopRestaurantDetail v-for="restaurant in top_restaurants" :key="restaurant.id" :restaurant="restaurant" :calculate-total-amount="calculateTotalPaymentPerRestaurant" />
           </div>
-          <div class="flex md:grid md:grid-cols-12 gap-6">
+          <div class="md:grid md:grid-cols-12 gap-6 space-y-3">
             <!-- Top Menu Items -->
             <PopularMenus v-if="popular_menus.length" :top-menu-items="popular_menus" />
             <div class="col-span-full lg:col-span-4 ">
