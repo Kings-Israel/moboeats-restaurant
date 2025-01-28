@@ -27,8 +27,12 @@
                 </div>
                 <div class="col-span-2 block md:grid md:grid-cols-2 gap-3">
                   <div>
-                    <label class="block text-sm font-medium mb-1" for="password">Password</label>
-                    <input id="password" class="w-full rounded-md border-2 border-slate-400 text-slate-800" type="password" autoComplete="on" v-model="password" />
+                    <div class="flex justify-between">
+                        <label class="block text-sm font-medium mb-1" for="password">Password</label>
+                        <i class="fas fa-eye cursor-pointer" id="show-password" @click="showPassword"></i>
+                        <i class="fas fa-eye-slash cursor-pointer hidden" id="hide-password" @click="showPassword"></i>
+                    </div>
+                    <input id="password" class="w-full rounded-md border-2 border-slate-400 text-slate-800" type="password" autoComplete="on" v-model="password"  />
                   </div>
                   <div>
                     <label class="block text-sm font-medium mb-1" for="password">Re-enter Password</label>
@@ -461,6 +465,8 @@ export default {
       showMerchantTermsModal.value = state
     }
 
+    const password_showing = ref(false)
+
     const onSubmit = () => {
       const formData = new FormData()
       formData.append('name', name.value)
@@ -482,6 +488,21 @@ export default {
         .catch(error => {
           toast.error(error.response.data.message)
         })
+    }
+
+    const showPassword = () => {
+        password_showing.value = !password_showing.value
+        if (password_showing.value) {
+            document.getElementById('show-password').classList.add('hidden')
+            document.getElementById('hide-password').classList.remove('hidden')
+            document.getElementById('password').type = 'text'
+            document.getElementById('confirm_password').type = 'text'
+        } else {
+            document.getElementById('show-password').classList.remove('hidden')
+            document.getElementById('hide-password').classList.add('hidden')
+            document.getElementById('password').type = 'password'
+            document.getElementById('confirm_password').type = 'password'
+        }
     }
 
     const onFileChange = (e) => {
@@ -507,6 +528,7 @@ export default {
       showMerchantTerms,
 
       onSubmit,
+      showPassword
     }
   }
 }
