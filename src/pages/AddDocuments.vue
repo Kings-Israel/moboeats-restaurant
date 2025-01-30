@@ -20,24 +20,24 @@
             </div>
           </div>          
 
-          <div class="mx-auto w-[40%] px-2 py-2 bg-gray-100 rounded-md">
-            <div class="flex justify-between mb-6">
+          <div class="mx-auto w-full lg:w-[40%] px-2 py-2 bg-gray-100 rounded-md">
+            <div class="md:flex md:justify-between mb-6">
               <h1 class="text-3xl text-slate-800 dark:text-slate-100 font-bold">Upload Business Documents! ✨</h1>
               <button class="btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white py-0" @click="file_count += 1">Add Document</button>
             </div>
             <!-- Form -->
             <form @submit.prevent="onSubmit">
               <div class="space-y-4">
-                <div v-for="count in file_count" :key="count" class="flex gap-3">
+                <div v-for="count in file_count" :key="count" class="md:flex gap-3">
                   <div>
                     <label class="block text-sm font-medium mb-1" for="email">Name</label>
-                    <input class="rounded-md border-2 border-slate-400 text-slate-900" type="text" v-model="file_names[count]" />
+                    <input class="rounded-md border-2 border-slate-400 text-slate-900 w-full" type="text" v-model="file_names[count]" />
                   </div>
                   <div class="w-full">
                     <label class="block text-sm font-medium mb-1" for="email">File</label>
-                    <div class="flex gap-2">
+                    <div class="md:flex gap-2">
                       <input id="profile_picture" v-on:change="onFileChange" @click="getCurrentField(count)" :ref="count" accept=".pdf" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" autoComplete="on" />
-                      <div class="btn btn-xs bg-red-600 text-white hover:cursor-pointer" @click="removeFile(count)">Remove</div>
+                      <div class="btn btn-xs bg-red-600 text-white hover:cursor-pointer mt-2 md:mt-0" @click="removeFile(count)">Remove</div>
                     </div>
                   </div>
                 </div>
