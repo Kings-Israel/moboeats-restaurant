@@ -1,5 +1,7 @@
 <template>
   <div class="min-w-fit">
+    <VOnboardingWrapper ref="wrapper" :steps="steps" />
+
     <!-- Sidebar backdrop (mobile only) -->
     <div class="fixed inset-0 bg-[#2E5945] bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200" :class="sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'" aria-hidden="true"></div>
 
@@ -28,7 +30,7 @@
         </button>
         <!-- Logo -->
         <router-link class="flex" to="/">
-          <img src="../images/1024.png" class="w-24 h-28 mx-auto object-contain" alt="">
+          <img src="../images/1024.png" class="w-24 h-28 mx-auto object-contain" alt="" id="mobo-logo">
         </router-link>
       </div>
 
@@ -39,7 +41,7 @@
           <ul class="mt-3">
             <!-- Dashboard -->
             <router-link :to="{ name: 'dashboard' }" custom v-slot="{ href, navigate, isExactActive }" :class="(currentRoute.fullPath === '/' || currentRoute.fullPath.includes('dashboard')) ? 'hover:text-slate-200' : 'hover:text-white'" href="#0" @click.prevent="parentLink.handleClick(); sidebarExpanded = true">
-              <div class="px-3 py-2 rounded-sm mb-0.5 text-slate-200 truncate transition duration-150 flex items-center gap-3" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
+              <div id="dashboard-link" class="px-3 py-2 rounded-sm mb-0.5 text-slate-200 truncate transition duration-150 flex items-center gap-3" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
                 <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                   <path class="fill-current" :class="(currentRoute.fullPath === '/' || currentRoute.fullPath.includes('dashboard')) ? 'text-yellow-500' : 'text-yellow-400'" d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z" />
                   <path class="fill-current" :class="(currentRoute.fullPath === '/' || currentRoute.fullPath.includes('dashboard')) ? 'text-yellow-600' : 'text-white'" d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z" />
@@ -52,7 +54,7 @@
             </router-link>
             <!-- Orders -->
             <router-link to="/orders" custom v-slot="{ href, navigate, isExactActive }">
-              <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
+              <li id="orders-link" class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center justify-between">
                     <div class="grow flex items-center">
@@ -73,7 +75,7 @@
             </router-link>
             <!-- Dine ins -->
             <router-link to="/dine-ins" custom v-slot="{ href, navigate, isExactActive }">
-              <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
+              <li id="dineins-link" class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center justify-between">
                     <div class="grow flex items-center">
@@ -94,7 +96,7 @@
             </router-link>
             <!-- Payments -->
             <router-link to="/payments" custom v-slot="{ href, navigate, isExactActive }">
-              <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
+              <li id="payments-link" class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center justify-between">
                     <div class="grow flex items-center">
@@ -111,7 +113,7 @@
             </router-link>
             <!-- Restaurants -->
             <router-link v-if="role == 'restaurant'" to="/restaurants" custom v-slot="{ href, navigate, isExactActive }">
-              <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
+              <li id="branches-link" class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center justify-between">
                     <div class="grow flex items-center">
@@ -134,7 +136,7 @@
             </router-link> 
             <!-- Menus -->
             <router-link v-if="role == 'restaurant' && (type == 'both' || type == 'restaurant')" to="/menus" custom v-slot="{ href, navigate, isExactActive }">
-              <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
+              <li id="menus-link" class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center justify-between">
                     <div class="grow flex items-center">
@@ -150,7 +152,7 @@
             </router-link>
             <!-- Groceries -->
             <router-link v-if="role == 'restaurant' && (type == 'both' || type == 'grocery shop')" custom v-slot="{ href, navigate, isExactActive }" to="/groceries">
-              <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
+              <li id="groceries-link" class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center justify-between">
                     <div class="grow flex items-center">
@@ -166,7 +168,7 @@
             </router-link>
             <!-- Promo Codes -->
             <router-link custom v-slot="{ href, navigate, isExactActive }" to="/promo-codes">
-              <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
+              <li id="promocodes-link" class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center justify-between">
                     <div class="grow flex items-center">
@@ -183,7 +185,7 @@
             </router-link>
             <!-- Discounts -->
             <router-link custom v-slot="{ href, navigate, isExactActive }" to="/discounts">
-              <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
+              <li id="discounts-link" class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-[#1c2e2a] rounded-xl'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center justify-between">
                     <div class="grow flex items-center">
@@ -201,7 +203,7 @@
             </router-link>
             <!-- Messages -->
             <router-link to="/messages" custom v-slot="{ href, navigate, isExactActive }">
-              <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-slate-900 rounded-xl'">
+              <li id="messages-link" class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-slate-900 rounded-xl'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center justify-between">
                     <div class="grow flex items-center">
@@ -242,6 +244,8 @@
 <script>
 import { ref, onMounted, onUnmounted, watch, inject } from 'vue'
 import { useRouter } from 'vue-router'
+import { VOnboardingWrapper, useVOnboarding } from 'v-onboarding'
+import 'v-onboarding/dist/style.css'
 
 import SidebarLinkGroup from './SidebarLinkGroup.vue'
 
@@ -250,6 +254,7 @@ export default {
   props: ['sidebarOpen'],
   components: {
     SidebarLinkGroup,
+    VOnboardingWrapper
   },  
   setup(props, { emit }) {
     const $http = inject("$http")
@@ -266,6 +271,7 @@ export default {
     const orders_count = ref(0)
     const dine_ins_count = ref(0)
     const unread_messages_count = ref(0)
+    const is_guided = ref(false)
 
     // close on click outside
     const clickHandler = ({ target }) => {
@@ -317,17 +323,81 @@ export default {
     onMounted(() => {
       role.value = localStorage.getItem('role')
       type.value = JSON.parse(localStorage.getItem('user')).type
+      is_guided.value = JSON.parse(localStorage.getItem('user')).is_guided
       document.addEventListener('click', clickHandler)
       document.addEventListener('keydown', keyHandler)
       getOrders()
       getDineins()
       getUnreadMessagesCount()
+      if (!is_guided.value) {
+        start()
+      }
     })
 
     onUnmounted(() => {
       document.removeEventListener('click', clickHandler)
       document.removeEventListener('keydown', keyHandler)
     })
+
+    const wrapper = ref(null)
+    const { start, goToStep, finish } = useVOnboarding(wrapper)
+
+    const steps = [
+      { attachTo: { element: '#mobo-logo' }, content: { title: "Welcome to your Moboeats Dashboard!", description: "Click next for us to take your through the features" } },
+      { attachTo: { element: '#dashboard-link' }, content: { title: "Dashboard!", description: "Get a brief overview of your orders, branches and payments." } },
+      { attachTo: { element: '#orders-link' }, content: { title: "Orders!", description: "A list of all your orders and their status" } },
+      { attachTo: { element: '#dineins-link' }, content: { title: "Dine Ins!", description: "View all your bookings that have been made to your branches" } },
+      { attachTo: 
+        { 
+          element: '#payments-link' 
+        }, 
+        content: { 
+          title: "Payments!", 
+          description: "Keep track of all payments made." 
+        },
+        on: {
+          afterStep: function (options) {
+            if (role.value == 'restaurant' && (type.value == 'both' || type.value == 'restaurant')) {
+              goToStep(5)
+            } else if(role.value == 'restaurant' && (type.value == 'both' || type.value == 'grocery shop')) {
+              goToStep(6)
+            } else {
+              goToStep(6)
+            }
+          }
+        }
+      },
+      { attachTo: { element: '#branches-link' }, content: { title: "Branches!", description: "Manage multiple branches." } },
+      { attachTo: 
+        { element: '#menus-link' }, 
+        content: { title: "Menu!", description: "Manage what you offer in all your branches" },
+        on: {
+          afterStep: function (options) {
+            if(role.value == 'restaurant' && (type.value == 'both' || type.value == 'grocery shop')) {
+              goToStep(7)
+            } else {
+              goToStep(8)
+            }
+          }
+        }
+      },
+      { attachTo: { element: '#groceries-link' }, content: { title: "Groceries!", description: "Manage the groceries that you offer. Add new and update existing ones." } },
+      { attachTo: { element: '#promocodes-link' }, content: { title: "Promocodes!", description: "Add and Manage Promo codes for your items in your menu" } },
+      { attachTo: { element: '#discounts-link' }, content: { title: "Discounts!", description: "Add and view discount performance for your menu items" } },
+      { 
+        attachTo: { element: '#messages-link' }, 
+        content: { title: "Messaging!", description: "Have direct contact with our support incase in need of any assistance" },
+        on: {
+          afterStep: function (options) {
+            $http.get('/user/guide/update')
+              .then(() => {})
+              .catch(error => {
+                console.log(error)
+              })
+          }
+        }
+      },
+    ]
 
     watch(sidebarExpanded, () => {
       localStorage.setItem('sidebar-expanded', sidebarExpanded.value)
@@ -339,6 +409,8 @@ export default {
     })
 
     return {
+      wrapper,
+      steps,
       trigger,
       sidebar,
       sidebarExpanded,

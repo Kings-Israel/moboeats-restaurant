@@ -19,6 +19,7 @@
     "laravel-echo": "^1.15.3",
     "moment": "^2.29.4",
     "pusher-js": "^8.3.0",
+    "v-onboarding": "^2.9.0",
     "vue": "^3.2.20",
     "vue-flatpickr-component": "^11.0.3",
     "vue-router": "^4.2.2",
