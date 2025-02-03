@@ -77,10 +77,10 @@
                     {{ restaurant.attributes.name }}
                     <span v-if="restaurant.attributes.status == 'Approved'">✨</span>
                   </h1>
-                  <span v-if="!restaurant.attributes.paypal_email" class="relative flex h-3 w-3" title="Enter Paypal or Venmo Email to receive payments">
+                  <!-- <span v-if="!restaurant.attributes.paypal_email" class="relative flex h-3 w-3" title="Enter Paypal or Venmo Email to receive payments">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-700 dark:bg-sky-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-3 w-3 bg-red-800 dark:bg-sky-500"></span>
-                  </span>
+                  </span> -->
                 </div>
                 <router-link class="btn btn-sm bg-yellow-300 text-slate-900" :to="{ name: 'create-restaurant', params: { id: restaurant.uuid} }">Edit Branch</router-link>
               </span>

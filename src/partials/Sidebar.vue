@@ -390,7 +390,9 @@ export default {
         on: {
           afterStep: function (options) {
             $http.get('/user/guide/update')
-              .then(() => {})
+              .then((res) => {
+                localStorage.setItem("user", JSON.stringify(res.data.data))
+              })
               .catch(error => {
                 console.log(error)
               })
