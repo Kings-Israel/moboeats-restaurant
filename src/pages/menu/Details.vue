@@ -134,7 +134,7 @@
               </div>
             </div>
             <!-- Orders & Payments -->
-            <div class="col-span-12 gap-6">
+            <div class="col-span-full md:col-span-12 gap-6">
               <div class="col-span-full xl:col-span-2">
                 <div class="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 h-fit">
                   <header class="px-5 py-2 border-b border-slate-100 dark:border-slate-700 flex justify-between">
@@ -198,14 +198,14 @@
                 </div>
               </div>
             </div>
-            <div class="col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+            <div class="col-span-full md:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
               <ul v-if="menu.relationships.images.length" class="flex flex-wrap justify-center sm:justify-start mb-8 sm:mb-0 -space-x-3 -ml-px p-2">
                 <li v-for="image in menu.relationships.images" :key="image.id">
                   <img class="w-52 h-44 rounded-xl object-cover" :src="image.attributes.imageUrl" alt="menu" />
                 </li>
               </ul>
             </div>
-            <div class="p-3 col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+            <div class="p-3 col-span-full md:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
               <div class="flex justify-between mb-6">
                 <h1 class="text-xl text-slate-800 dark:text-slate-100 font-bold"> Update Images</h1>
               </div>
@@ -228,7 +228,7 @@
                 </div>
               </form>
             </div>
-            <div class="p-3 col-span-8 bg-white rounded-sm border border-slate-200">
+            <div class="p-3 col-span-full md:col-span-8 bg-white rounded-sm border border-slate-200">
               <header class="px-5 py-2 border-b border-slate-100 dark:border-slate-700 flex justify-between">
                 <h2 class="font-semibold text-slate-800 dark:text-slate-100 underline">Prices</h2>
               </header>
@@ -246,7 +246,7 @@
                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                           <div class="font-semibold text-left">Status</div>
                         </th>
-                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                        <th class="hidden md:block px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                           <div class="font-semibold text-left">Added On</div>
                         </th>
                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -266,7 +266,7 @@
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                           <div class="text-left">{{resolvePriceStatus(price.attributes.status)}}</div>
                         </td>
-                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                        <td class="hidden md:block px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                           <div class="text-left">{{moment(price.attributes.created_at).fromNow()}}</div>
                         </td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -280,14 +280,14 @@
                 </div>
               </div> 
             </div>
-            <div class="p-3 col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+            <div class="p-3 col-span-full md:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
               <div class="flex justify-between mb-6">
                 <h1 class="text-xl text-slate-800 dark:text-slate-100 font-bold"> Update Prices</h1>
               </div>
-              <form class="relative flex flex-col justify-evenly" @submit.prevent="createMenu('add price')">
+              <form class="relative md:flex flex-col justify-evenly" @submit.prevent="createMenu('add price')">
                 <div class="flex gap-2 w-full max-h-[26rem] overflow-auto flex-wrap">
-                  <div class="flex justify-between">
-                    <div>
+                  <div class="md:flex md:justify-between w-full">
+                    <div class="w-full">
                       <label class="block text-sm font-medium mb-1" for="price">Price</label>
                       <input id="title" class="form-input w-full rounded-lg" type="text" v-model="addPrice" />
                     </div>
@@ -307,7 +307,7 @@
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div class="w-full">
                     <label class="block text-sm font-medium mb-1" for="title">Description</label>
                     <textarea name="addCategoryDescription" id="" class="form-input w-full min-h-full rounded-lg" rows="2" v-model="addPriceDescription"></textarea>
                   </div>

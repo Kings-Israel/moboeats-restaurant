@@ -28,7 +28,7 @@
               <modal-action :id="'addMenu'" :modal-open="addMenuModal" @close-modal="addMenuModal = false" :add-class="'max-w-4xl'">
                 <!-- Add/Edit Menu -->
                 <form class="flex flex-col justify-around p-2 px-4" @submit.prevent="createMenu">
-                  <div class="grid grid-cols-2 gap-2">
+                  <div class="md:grid md:grid-cols-2 gap-2">
                     <div class="space-y-4">
                       <div>
                         <label class="block text-sm font-medium mb-1" for="title">Title</label>
@@ -143,13 +143,13 @@
                         <th class="p-2">
                           <div class="font-semibold text-left">Status</div>
                         </th>
-                        <th class="p-2">
+                        <th class="hidden md:block p-2">
                           <div class="font-semibold text-left">Prep. Time</div>
                         </th>
                         <th class="p-2">
                           <div class="font-semibold text-center">Orders</div>
                         </th>
-                        <th class="p-2">
+                        <th class="hidden md:block p-2">
                           <div class="font-semibold text-center">Added On</div>
                         </th>
                         <th>Actions</th>
@@ -162,7 +162,7 @@
                         <td class="p-2">
                           <div class="flex items-center">
                             <!-- <img :src="menu_item.image" alt="" class="w-8 h-8 object-cover mx-2"> -->
-                            <ul class="flex flex-wrap justify-center sm:justify-start mb-8 sm:mb-0 -space-x-3 -ml-px">
+                            <ul class="hidden md:flex flex-wrap justify-center sm:justify-start mb-8 sm:mb-0 -space-x-3 -ml-px">
                               <li v-for="image in menu_item.images" :key="image.id">
                                 <img class="w-9 h-9 rounded-full" :src="image.image_url" width="36" height="36" alt="menu" />
                               </li>
@@ -178,18 +178,18 @@
                         <td class="p-2">
                           <div :class="menu_item.status == 2 ? 'text-green-700 font-semobold' : 'text-red-700 font-semobold'">{{ menu_item.status == 2 ? 'Active' : 'Inactive' }}</div>
                         </td>
-                        <td class="p-2">
+                        <td class="hidden md:block p-2">
                           <div class="text-sky-600 font-semibold">{{ menu_item.preparation_time }} mins</div>
                         </td>
                         <td class="p-2">
                           <div class="text-center text-sky-600 font-semibold">{{ menu_item.order_items_count }}</div>
                         </td>
-                        <td class="p-2">
+                        <td class="hidden md:flex p-2">
                           <div v-if="menu_item.created_at" class="text-center text-sky-600 font-semibold">{{ moment(menu_item.created_at).format('Do MMM Y') }}</div>
                         </td>
-                        <td class="p-2 flex justify-between">
-                          <router-link :to="{ name: 'menu-details', params: { id: menu_item.uuid }}">
-                            <button class="btn btn-sm font-medium bg-indigo-500 text-white dark:hover:text-indigo-400">View</button>
+                        <td class="p-2">
+                          <router-link class="mx-auto" :to="{ name: 'menu-details', params: { id: menu_item.uuid }}">
+                            <button class="mx-auto btn btn-sm font-medium bg-indigo-500 text-white dark:hover:text-indigo-400">View</button>
                           </router-link>
                         </td>
                       </tr>
