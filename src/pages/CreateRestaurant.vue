@@ -203,7 +203,7 @@ export default {
       formData.append('paypal_email', paypal_email.value)
       formData.append('logo', logo.value)
 
-      submit_button.value.innerHTML = 'Creating...'
+      submit_button.value.innerHTML = status.value == 'create' ? 'Creating...' : 'Updating...'
       submit_button.value.setAttribute('disabled', 'disabled')
 
       if (status.value == 'create') {
