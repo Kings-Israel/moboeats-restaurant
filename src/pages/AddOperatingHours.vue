@@ -20,7 +20,7 @@
             </div>
           </div>          
 
-          <div class="mx-auto w-[40%] px-4 py-2 bg-gray-100 rounded-lg">
+          <div class="mx-auto w-full lg:w-[40%] px-4 py-2 bg-gray-100 rounded-lg">
             <h1 class="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">{{ status == 'create' ? Enter : 'Update' }} Operating Hours! ✨</h1>
             <!-- Form -->
             <form @submit.prevent="onSubmit">
@@ -32,7 +32,7 @@
                     <input class="w-full rounded-md border-2 border-slate-400 text-slate-800" type="time" v-model="opening_times[index]" />
                     <input class="w-full rounded-md border-2 border-slate-400 text-slate-800" type="time" v-model="closing_times[index]" />
                   </div>
-                  <div class="flex-none flex my-auto">
+                  <div class="hidden md:flex md:flex-none my-auto">
                     <div class="form-switch">
                       <input type="checkbox" :id="day" class="sr-only" v-model="closed_days[day]" true-value="On" false-value="Off" />
                       <label class="bg-slate-400 dark:bg-slate-700" :for="day">
