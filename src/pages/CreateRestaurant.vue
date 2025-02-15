@@ -270,7 +270,7 @@ export default {
       }
 
       const successCallback = (position) => {
-        console.log(position);
+        console.log(position.coords.latitude);
       };
 
       const errorCallback = (error) => {
