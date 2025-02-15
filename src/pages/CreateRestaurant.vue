@@ -267,17 +267,19 @@ export default {
             }
             status.value = 'update'
           })
+      } else {
+        const successCallback = (position) => {
+          center.value = {lat: Number(position.coords.latitude), lng: Number(position.coords.longitude)}
+          marker.value.push({ position: { lat: Number(position.coords.latitude), lng: Number(position.coords.longitude) } })
+          zoom.value = 16
+        };
+  
+        const errorCallback = (error) => {
+          console.log(error);
+        };
+  
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
       }
-
-      const successCallback = (position) => {
-        console.log(position.coords.latitude);
-      };
-
-      const errorCallback = (error) => {
-        console.log(error);
-      };
-
-      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     })
 
     const onFileChange = (e) => {
