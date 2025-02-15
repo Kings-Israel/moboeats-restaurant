@@ -268,6 +268,16 @@ export default {
             status.value = 'update'
           })
       }
+
+      const successCallback = (position) => {
+        console.log(position);
+      };
+
+      const errorCallback = (error) => {
+        console.log(error);
+      };
+
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     })
 
     const onFileChange = (e) => {
