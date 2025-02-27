@@ -647,8 +647,8 @@ export default {
           addMenuDescription.value = ''
           addMenuCategories.value = []
           addMenuStatus.value = ''
-          addPrices.value = []
-          addPriceDescriptions.value = []
+          // addPrices.value = []
+          // addPriceDescriptions.value = []
           addPriceStatus.value = []
           addPricesCount.value = 0
     
