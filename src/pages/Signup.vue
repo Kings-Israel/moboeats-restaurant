@@ -51,7 +51,7 @@
                     <!-- Start -->
                     <label class="flex items-center">
                       <input type="radio" name="menu-active" v-model="type" value="both" class="form-radio" />
-                      <span class="text-sm font-bold ml-2">Partner Branch and Grocery Shop</span>
+                      <span class="text-sm font-bold ml-2">Restaurant and Grocery Shop</span>
                     </label>
                     <!-- End -->
                   </div>
@@ -60,7 +60,7 @@
                     <!-- Start -->
                     <label class="flex items-center">
                       <input type="radio" name="menu-active" v-model="type" value="restaurant" class="form-radio" />
-                      <span class="text-sm font-bold ml-2">Partner Branch</span>
+                      <span class="text-sm font-bold ml-2">Restaurant</span>
                     </label>
                     <!-- End -->
                   </div>
