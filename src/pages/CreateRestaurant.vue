@@ -267,6 +267,20 @@ export default {
             }
             status.value = 'update'
           })
+
+          const successCallback = (position) => {
+            console.log(position)
+            // center.value = {lat: Number(position.coords.latitude), lng: Number(position.coords.longitude)}
+            // marker.value.push({ position: { lat: Number(position.coords.latitude), lng: Number(position.coords.longitude) } })
+            // zoom.value = 16
+          };
+    
+          const errorCallback = (error) => {
+            toast.error('An error occured while getting your current location')
+            console.log(error);
+          };
+    
+          navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
       } else {
         const successCallback = (position) => {
           console.log(position)
