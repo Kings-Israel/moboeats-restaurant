@@ -73,6 +73,8 @@ export default {
 
     const seatingAreas = ref([])
 
+    const status = ref('create')
+
     const addTable = () => {
       const formData = new FormData()
       formData.append('name', addTableName.value)
@@ -105,6 +107,7 @@ export default {
       addTableSeatingArea,
       addTableSeatsNumber,
       seatingAreas,
+      status,
     }
   }
 }

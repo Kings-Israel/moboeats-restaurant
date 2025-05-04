@@ -21,7 +21,7 @@
           </div>          
 
           <div class="mx-auto w-full lg:w-[40%] px-4 py-2 bg-gray-100 rounded-lg">
-            <h1 class="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">{{ status == 'create' ? Enter : 'Update' }} Operating Hours! ✨</h1>
+            <h1 class="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">{{ status == 'create' ? 'Enter' : 'Update' }} Your Operating Hours! ✨</h1>
             <!-- Form -->
             <form @submit.prevent="onSubmit">
               <div class="space-y-4">
