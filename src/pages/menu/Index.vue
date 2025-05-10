@@ -23,8 +23,9 @@
 
             <!-- Right: Actions  -->
             <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-              <button class="bg-emerald-600 py-2 px-4 col-span-1 text-slate-50 font-semibold rounded-full justify-end" @click="exportMenus()">Export Menus</button>
+              <button class="bg-emerald-600 hover:bg-indigo-500 py-2 px-4 col-span-1 text-slate-50 font-semibold rounded-full justify-end" @click="exportMenus()">Export Menus</button>
               <button class="bg-[#2E5945] hover:bg-indigo-500 py-2 text-white rounded-full px-4" @click="addMenuModal = true">Add Menu</button>
+              <button class="bg-[#0b2e1e] hover:bg-indigo-500 py-2 text-white rounded-full px-4" @click="uploadMenuModal = true">Upload Menu</button>
               <modal-action :id="'addMenu'" :modal-open="addMenuModal" @close-modal="addMenuModal = false" :add-class="'max-w-4xl'">
                 <!-- Add/Edit Menu -->
                 <form class="flex flex-col justify-around p-2 px-4" @submit.prevent="createMenu">
@@ -102,6 +103,19 @@
                   </div>
                   <div class="flex justify-end bottom-2 ">
                     <button type="submit" class="btn bg-[#2E5945] hover:bg-indigo-600 text-white">Submit</button>
+                  </div>
+                </form>
+              </modal-action>
+              <modal-action :id="'addMenu'" :modal-open="uploadMenuModal" @close-modal="uploadMenuModal = false" :add-class="'max-w-lg'">
+                <!-- Add/Edit Menu -->
+                <form class="flex flex-col justify-around p-2 px-4" @submit.prevent="uploadMenu">
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1" for="profile_picture">Select File</label>
+                    <input accept=".xlsx" v-on:change="onFileChange" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" autoComplete="on" />
+                  </div>
+                  <div class="flex justify-end bottom-2 space-x-2">
+                    <a href="#" class="btn bg-[#324c40] hover:bg-indigo-600 text-white" @click="downloadTemplate">Download Template</a>
+                    <button type="submit" class="btn bg-[#1c2420] hover:bg-indigo-600 text-white">Submit</button>
                   </div>
                 </form>
               </modal-action>
@@ -276,6 +290,10 @@ export default {
     const editMenuModal = ref(false)
 
     const addMenuModal = ref(false)
+
+    const uploadMenuModal = ref(false)
+
+    const uploadMenuFile = ref(null)
 
     const baseURL = process.env.NODE_ENV === 'development' ? 'http://moboeats.test/' : 'https://moboeats.com/'
 
@@ -500,6 +518,78 @@ export default {
         })
     }
 
+    const onFileChange = (e) => {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+      uploadMenuFile.value = files[0];
+    }
+
+    const uploadMenu = () => {
+      const formData = new FormData
+      formData.append('file', uploadMenuFile.value)
+      $http.post('/restaurant/menu/upload', formData)
+      .then(response => {
+        uploadMenuModal.value = false
+        uploadMenuFile.value++
+        toast.success(response.data.message)
+        getMenu()
+      })
+      .catch(err => {
+        // toast.success(err.response.data.message)
+        // getMenu()
+        if (err.response.status == 422 || err.response.status == 400) {
+            uploadMenuFile.value++
+            let responseMessage = ''
+            Object.values(err.response.data).forEach(message => {
+              responseMessage = `${responseMessage} ${message}, `
+            })
+            toast.error(responseMessage)
+            return
+          }
+
+          if (err.response.data.uploaded > 0) {
+            toast.success(err.response.data.uploaded + ' uploaded.');
+          }
+
+          if (err.response.data.total_rows - err.response.data.uploaded > 0) {
+            toast.error(err.response.data.total_rows - err.response.data.uploaded + ' failed to upload.');
+            getMenu()
+            uploadMenuFile.value++
+          } else {
+            uploadMenuModal.value = false
+            uploadMenuFile.value++
+            getMenu()
+          }
+      })
+    }
+
+    const downloadTemplate = () => {
+      $http.get('/restaurant/menu/template/download',
+          {
+            responseType: 'arraybuffer',
+            method: 'GET'
+          }
+      )
+        .then(response => {
+          const fileURL = window.URL.createObjectURL(new Blob([response.data]))
+          const fileLink = document.createElement('a')
+
+          fileLink.href = fileURL
+          fileLink.setAttribute(
+            'download',
+            `MenuTemplate.xlsx`,
+          )
+          document.body.appendChild(fileLink)
+
+          fileLink.click()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+
     return {
       sidebarOpen,
 
@@ -544,7 +634,13 @@ export default {
 
       moment,
 
-      exportMenus
+      exportMenus,
+
+      onFileChange,
+
+      uploadMenuModal,
+      uploadMenu,
+      downloadTemplate,
     }
   }
 }
