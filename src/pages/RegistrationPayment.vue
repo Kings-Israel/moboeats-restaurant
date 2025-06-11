@@ -82,13 +82,13 @@ export default {
             toast.success("Registration Fee already paid");
           } else {
             registrationFee.value = res.data.data.data;
-            // if (registrationFee.value == 0) {
-            //     router.push({
-            //     name: "restaurant-details",
-            //     params: { id: route.params.uuid },
-            //     });
-            //     toast.success("Restaurant Registration Successful");
-            // }
+            if (registrationFee.value == 0) {
+              router.push({
+                name: "restaurant-details",
+                params: { id: route.params.uuid },
+              });
+              toast.success("Restaurant Registration Successful");
+            }
           }
         })
         .catch((error) => {
