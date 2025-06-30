@@ -27,9 +27,9 @@
                 Complete Registration Fee Payment! ✨
               </h1>
             </div>
-            <span>
-              {{ registrationFee }}
-            </span>
+            <p class="text-2xl text-slate-800 dark:text-slate-100 font-semibold mb-4 text-center">
+              Kindly Pay <strong>{{ registrationFee }}</strong> to complete your registration.
+            </p>
             <!-- Form -->
             <form @submit.prevent="completePayment">
               <div class="space-y-4"></div>
@@ -39,7 +39,7 @@
                   class="btn bg-[#001510] hover:bg-indigo-600 text-white"
                   ref="submit_button"
                 >
-                  Submit
+                  Proced
                 </button>
               </div>
             </form>

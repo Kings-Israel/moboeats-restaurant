@@ -321,7 +321,7 @@ export default {
     }
 
     onMounted(() => {
-      role.value = localStorage.getItem('role')
+      role.value = JSON.parse(localStorage.getItem('user')).role
       type.value = JSON.parse(localStorage.getItem('user')).type
       is_guided.value = JSON.parse(localStorage.getItem('user')).is_guided
       document.addEventListener('click', clickHandler)
