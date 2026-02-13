@@ -85,7 +85,7 @@
 
       <!-- Image -->
       <div
-        class="lg:absolute lg:top-0 lg:bottom-0 lg:right-0 lg:w-1/2 bg-[#2E5945]"
+        class="lg:absolute lg:top-0 lg:bottom-0 lg:right-0 lg:w-1/2 bg-white"
         aria-hidden="true"
       >
         <img
