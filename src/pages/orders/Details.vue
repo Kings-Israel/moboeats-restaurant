@@ -141,7 +141,7 @@
             </div>
           </div>
           <br>
-          <div v-if="order.delivery" class="w-full">
+          <!-- <div v-if="order.delivery" class="w-full">
             <GMapMap
               ref="mapRef"
               :center="center"
@@ -157,7 +157,7 @@
                 icon="../../../src/images/motorcycle.svg"
               />
             </GMapMap>
-          </div>
+          </div> -->
         </div>
       </main>
     </div> 

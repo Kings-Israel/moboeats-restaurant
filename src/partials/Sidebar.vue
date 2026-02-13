@@ -160,7 +160,7 @@
                         <circle class="fill-current" :class="currentRoute.fullPath.includes('groceries') ? 'text-yellow-500' : 'text-white'" cx="16" cy="8" r="8" />
                         <circle class="fill-current" :class="currentRoute.fullPath.includes('groceries') ? 'text-yellow-300' : 'text-yellow-400'" cx="8" cy="16" r="8" />                      
                       </svg>
-                      <span class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Groceries</span>
+                      <span class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Coffee</span>
                     </div>
                   </div>
                 </a>
