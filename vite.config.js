@@ -6,7 +6,7 @@ export default defineConfig({
   define: {
     'process.env': process.env
   },
-  base: process.env.NODE_ENV == 'production' ? 'https://ecodeli.backend.amaniaccess.com' : '',
+  base: process.env.NODE_ENV == 'production' ? 'https://partner.ecodeli.amaniaccess.com' : '',
   plugins: [vue()],
   resolve: {
     alias: [
