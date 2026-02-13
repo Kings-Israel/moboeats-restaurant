@@ -30,7 +30,11 @@
         </button>
         <!-- Logo -->
         <router-link class="flex" to="/">
-          <img src="../images/1024.png" class="w-24 h-28 mx-auto object-contain" alt="" id="mobo-logo">
+          <img
+            src="../images/ecodeli.jpeg"
+            class="w-16 md:w-44 md:h-28 mx-auto object-contain rounded-lg"
+            alt=""
+          />
         </router-link>
       </div>
 
