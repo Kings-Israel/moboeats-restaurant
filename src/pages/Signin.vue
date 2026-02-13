@@ -3,8 +3,8 @@
     <div class="relative flex flex-col-reverse lg:flex-row">
       <!-- Content -->
       <div class="w-full lg:w-1/2">
-        <div class="min-h-[100vh] h-full pt-24 flex flex-col after:flex-1 bg-[#2E5945]">
-          <div class="max-w-sm mx-auto w-full px-4 py-8 bg-gray-100 rounded-md lg:mt-28">
+        <div class="min-h-[100vh] h-full pt-24 flex flex-col after:flex-1 bg-white">
+          <div class="max-w-sm mx-auto w-full px-4 py-8 bg-[#2E5909] rounded-md lg:mt-28">
             <h1
               class="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6"
             >
@@ -89,7 +89,7 @@
         aria-hidden="true"
       >
         <img
-          src="../images/1024.png"
+          src="../images/ecodeli.jpeg"
           class="my-auto mx-auto lg:mx-32 object-contain w-32 lg:w-96 lg:mt-44"
           alt=""
         />
