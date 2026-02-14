@@ -32,7 +32,7 @@
         <router-link class="flex" to="/">
           <img
             src="../images/ecodeli.jpeg"
-            class="w-16 md:w-44 md:h-28 mx-auto object-contain rounded-lg"
+            class="w-16 md:w-44 md:h-28 mx-auto object-contain rounded-xl"
             alt=""
           />
         </router-link>
