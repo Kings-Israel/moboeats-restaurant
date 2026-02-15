@@ -4,7 +4,7 @@
       <!-- Content -->
       <div class="w-full lg:w-1/2">
         <div class="min-h-[100vh] h-full pt-24 flex flex-col after:flex-1 bg-white">
-          <div class="max-w-sm mx-auto w-full px-4 py-8 bg-[#2E5909] rounded-md lg:mt-28">
+          <div class="max-w-sm mx-auto w-full px-4 py-8 bg-jh-red-700 rounded-md lg:mt-28">
             <h1
               class="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6"
             >
@@ -60,7 +60,7 @@
                 </div>
                 <button
                   type="submit"
-                  class="btn bg-[#2E5945] hover:bg-indigo-600 text-white ml-3 font-bold transition duration-150 ease-in-out"
+                  class="btn bg-black hover:bg-jh-red-700 text-white ml-3 font-bold transition duration-150 ease-in-out"
                 >
                   Sign In
                 </button>
@@ -85,12 +85,12 @@
 
       <!-- Image -->
       <div
-        class="lg:absolute lg:top-0 lg:bottom-0 lg:right-0 lg:w-1/2 bg-white"
+        class="hidden md:block md:mt-36 lg:mt-72 bg-white"
         aria-hidden="true"
       >
         <img
-          src="../images/ecodeli.jpeg"
-          class="my-auto mx-auto lg:mx-32 object-contain w-32 lg:w-96 lg:mt-44"
+          src="../images/javahouse.png"
+          class="w-[40rem] object-contain rounded-lg"
           alt=""
         />
       </div>
